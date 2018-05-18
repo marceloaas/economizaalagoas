@@ -13,5 +13,13 @@
             "email": "andrade.asmarcelo@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    }
 }
