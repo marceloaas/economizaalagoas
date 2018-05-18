@@ -1,0 +1,17 @@
+{
+    "name": "marcelodeandrade/economizaalagoas",
+    "description": "Cliente PHP para acesso à API do projeto Economiza Alagoas",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "php": ">=7.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marcelo de Andrade",
+            "email": "andrade.asmarcelo@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
