@@ -37,18 +37,31 @@ class Client
     protected $token;
 
     /**
-     * URL base da API
-     *
-     * @var [string]
-     */
-    protected $baseUri = 'http://api.sefaz.al.gov.br';
-    
-    /**
      * Instância de GuzzleHttp\Client
      *
      * @var [\GuzzleHttp\Client]
      */
     protected $httpClient;
+
+    /**
+     * URL base da API
+     *
+     * @var [string]
+     */
+    protected $baseUri = 'http://api.sefaz.al.gov.br';
+
+    /**
+     * Endpoints acessíveis
+     *
+     * @var array
+     */
+    protected $endpoint = [
+        'nfce' => [
+            'estabelecimento'   => 'sfz_nfce_api/api/public/consultarPrecoProdutoEmEstabelecimento',
+            'ean'               => 'sfz_nfce_api/api/public/consultarPrecosPorCodigoDeBarras',
+            'descricacao'       => 'sfz_nfce_api/api/public/consultarPrecosPorDescricao'
+        ]
+    ];
 
     /**
      * __construct
