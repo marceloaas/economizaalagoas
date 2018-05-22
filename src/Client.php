@@ -79,7 +79,7 @@ class Client
     *
     * @return void
     */
-    public function setHttpClient(): void
+    protected function setHttpClient(): void
     {
         $this->httpClient = new GuzzleClient([
             'base_uri'  => $this->baseUri,
@@ -95,7 +95,7 @@ class Client
      *
      * @return \GuzzleHttp\Client
      */
-    public function getHttpClient(): \GuzzleHttp\Client
+    protected function getHttpClient(): \GuzzleHttp\Client
     {
         return $this->httpClient;
     }
