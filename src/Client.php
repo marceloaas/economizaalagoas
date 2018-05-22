@@ -71,6 +71,23 @@ class Client
     public function __construct(string $token)
     {
         $this->token = $token;
+        $this->setHttpClient();
+    }
+
+    /**
+    * Define httpClient como uma instância de \GuzzleHttp\Client
+    *
+    * @return void
+    */
+    public function setHttpClient(): void
+    {
+        $this->httpClient = new GuzzleClient([
+            'base_uri'  => $this->baseUri,
+            'headers'   => [
+                'AppToken'      => $this->token,
+                'Content-Type'  => 'application/json',
+            ],
+        ]);
     }
 
     /**
@@ -80,6 +97,6 @@ class Client
      */
     public function getHttpClient(): \GuzzleHttp\Client
     {
-        return $this->httpClient ?? $this->httpClient = new GuzzleClient();
+        return $this->httpClient;
     }
 }
