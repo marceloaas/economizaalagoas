@@ -59,7 +59,7 @@ class Client
         'nfce' => [
             'estabelecimento'   => 'sfz_nfce_api/api/public/consultarPrecoProdutoEmEstabelecimento',
             'ean'               => 'sfz_nfce_api/api/public/consultarPrecosPorCodigoDeBarras',
-            'descricacao'       => 'sfz_nfce_api/api/public/consultarPrecosPorDescricao'
+            'descricao'         => 'sfz_nfce_api/api/public/consultarPrecosPorDescricao'
         ]
     ];
 
