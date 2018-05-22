@@ -99,4 +99,21 @@ class Client
     {
         return $this->httpClient;
     }
+
+    /**
+     * Responsável pelas requisições utilizando \GuzzleHttp\Client
+     *
+     * @param string $method
+     * @param string $endpoint
+     * @param array $body
+     * @return void
+     */
+    protected function doRequest(string $method, string $endpoint, array $body): \GuzzleHttp\Psr7\Request
+    {
+        $response = ($this->getHttpClient())->request($method, $endpoint, [
+            \GuzzleHttp\RequestOptions::JSON => $body
+        ]);
+
+        return $response;
+    }
 }
