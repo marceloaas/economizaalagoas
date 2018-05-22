@@ -108,7 +108,7 @@ class Client
      * @param array $body
      * @return void
      */
-    protected function doRequest(string $method, string $endpoint, array $body): \GuzzleHttp\Psr7\Request
+    protected function doRequest(string $method, string $endpoint, array $body): \GuzzleHttp\Psr7\Response
     {
         $response = ($this->getHttpClient())->request($method, $endpoint, [
             \GuzzleHttp\RequestOptions::JSON => $body
