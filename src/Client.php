@@ -116,4 +116,16 @@ class Client
 
         return $response;
     }
+
+    /**
+     * Retorna uma string JSON com a lista de preços do produto consultado
+     *
+     * @param array $body
+     * @return string
+     */
+    public function consultarPrecosPorDescricao(array $body): string
+    {
+        return (string) ($this->doRequest('POST', $this->endpoint['nfce']['descricao'], $body))
+            ->getBody();
+    }
 }
