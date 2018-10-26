@@ -51,16 +51,21 @@ class Client
     protected $baseUri = 'http://api.sefaz.al.gov.br';
 
     /**
+     * Caminho base da API
+     *
+     * @var [string]
+     */
+    protected $baseApiPath = '/sfz_nfce_api/api/public/';
+
+    /**
      * Endpoints acessíveis
      *
      * @var array
      */
-    protected $endpoint = [
-        'nfce' => [
-            'estabelecimento'   => 'sfz_nfce_api/api/public/consultarPrecoProdutoEmEstabelecimento',
-            'ean'               => 'sfz_nfce_api/api/public/consultarPrecosPorCodigoDeBarras',
-            'descricao'         => 'sfz_nfce_api/api/public/consultarPrecosPorDescricao'
-        ]
+    protected $methods = [
+        'nfce.estabelecimento'  => "consultarPrecoProdutoEmEstabelecimento",
+        'nfce.ean'              => "consultarPrecosPorCodigoDeBarras",
+        'nfce.descricao'        => "consultarPrecosPorDescricao",
     ];
 
     /**
@@ -116,25 +121,34 @@ class Client
 
         return $response;
     }
-        
+
     /**
      * Retorna uma string JSON com a lista de preços do produto consultado
      *
      * @param array $body
      * 
      * $body => [
-     *     'descricao' => '[String] Nome do produto.',
-     *     'dias' => '[Integer] Número de dias da oferta (máx. 3 dias).',
-     *     'latitude' => '[Double] Latitude de onde se encontra o dispositivo de consulta.',
-     *     'longitude' => '[Double] Longitude de onde se encontra o dispositivo de consulta.',
-     *     'raio' => '[Integer] Raio de alcance em Kilômetros dos estabelecimentos pesquisados  (máx. 15 km).'
+     *     'descricao' => 'String', // Nome do produto.',
+     *     'dias' => 'Integer', // Número de dias da oferta (máx. 3 dias).',
+     *     'latitude' => 'Double', // Latitude de onde se encontra o dispositivo de consulta.',
+     *     'longitude' => 'Double', // Longitude de onde se encontra o dispositivo de consulta.',
+     *     'raio' => 'Integer', // Raio de alcance em Kilômetros dos estabelecimentos pesquisados  (máx. 15 km).'
      * ];
      * 
      * @return string
      */
     public function consultarPrecosPorDescricao(array $body): string
     {
-        return (string) ($this->doRequest('POST', $this->endpoint['nfce']['descricao'], $body))
+        return ($this->doRequest('POST', $this->getMethod('nfce.descricao'), $body))
             ->getBody();
+    }
+
+    /**
+     * @param string $method
+     * @return string
+     */
+    public function getMethod(string $method): string
+    {
+        return "{$this->baseUri}{$this->baseApiPath}{$this->methods[$method]}";
     }
 }
