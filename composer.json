@@ -1,5 +1,5 @@
 {
-    "name": "marcelodeandrade/economizaalagoas",
+    "name": "M91/economizaalagoas",
     "description": "Cliente PHP para acesso à API do projeto Economiza Alagoas",
     "type": "library",
     "require": {
@@ -19,12 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Economizaalagoas\\": "src/"
+            "M91\\economizaalagoas\\": "src/"
         }
     },
     "autoload-dev": {
          "psr-4": {
-             "Economizaalagoas\\Tests\\": "tests/"
+             "M91\\economizaalagoas\\Tests\\": "tests/"
           }
      }
 }

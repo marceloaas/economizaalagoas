@@ -1,8 +1,8 @@
 <?php
 
-namespace Economizaalagoas\Tests;
+namespace M91\economizaalagoas\Tests;
 
-use \Economizaalagoas\Client;
+use M91\economizaalagoas\Client;
 
 class ClientTest extends \PHPUnit\Framework\TestCase
 {

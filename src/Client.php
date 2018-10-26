@@ -13,7 +13,7 @@
  * Github
  */
 
-namespace Economizaalagoas;
+namespace M91\economizaalagoas;
 
 use GuzzleHttp\Client as GuzzleClient;
 
