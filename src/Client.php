@@ -116,11 +116,20 @@ class Client
 
         return $response;
     }
-
+        
     /**
      * Retorna uma string JSON com a lista de preços do produto consultado
      *
      * @param array $body
+     * 
+     * $body => [
+     *     'descricao' => '[String] Nome do produto.',
+     *     'dias' => '[Integer] Número de dias da oferta (máx. 3 dias).',
+     *     'latitude' => '[Double] Latitude de onde se encontra o dispositivo de consulta.',
+     *     'longitude' => '[Double] Longitude de onde se encontra o dispositivo de consulta.',
+     *     'raio' => '[Integer] Raio de alcance em Kilômetros dos estabelecimentos pesquisados  (máx. 15 km).'
+     * ];
+     * 
      * @return string
      */
     public function consultarPrecosPorDescricao(array $body): string
