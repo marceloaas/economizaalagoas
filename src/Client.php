@@ -51,16 +51,21 @@ class Client
     protected $baseUri = 'http://api.sefaz.al.gov.br';
 
     /**
+     * Caminho base da API
+     *
+     * @var [string]
+     */
+    protected $baseApiPath = '/sfz_nfce_api/api/public/';
+
+    /**
      * Endpoints acessíveis
      *
      * @var array
      */
-    protected $endpoint = [
-        'nfce' => [
-            'estabelecimento'   => 'sfz_nfce_api/api/public/consultarPrecoProdutoEmEstabelecimento',
-            'ean'               => 'sfz_nfce_api/api/public/consultarPrecosPorCodigoDeBarras',
-            'descricao'         => 'sfz_nfce_api/api/public/consultarPrecosPorDescricao'
-        ]
+    protected $methods = [
+        'nfce.estabelecimento'  => "consultarPrecoProdutoEmEstabelecimento",
+        'nfce.ean'              => "consultarPrecosPorCodigoDeBarras",
+        'nfce.descricao'        => "consultarPrecosPorDescricao",
     ];
 
     /**
@@ -134,7 +139,16 @@ class Client
      */
     public function consultarPrecosPorDescricao(array $body): string
     {
-        return (string) ($this->doRequest('POST', $this->endpoint['nfce']['descricao'], $body))
+        return ($this->doRequest('POST', $this->getMethod('nfce.descricao'), $body))
             ->getBody();
+    }
+
+    /**
+     * @param string $method
+     * @return string
+     */
+    public function getMethod(string $method): string
+    {
+        return "{$this->baseUri}{$this->baseApiPath}{$this->methods[$method]}";
     }
 }
